@@ -14,26 +14,36 @@
 
 // const secretNumber = 5;
 // guesser();
+function myGuesser() {
+  const secretNumber = Math.floor(Math.random() * 100 + 1);
+  console.log(secretNumber);
+  let finish = false;
+  let counter = 0;
+  function guesser() {
+    const guess = prompt('Guess the Number');
+    counter++;
+    const mydoc = document.getElementById('output');
+    const myDiv = document.querySelector('.div_2');
+    const guessNumber = parseInt(guess);
+    if (guessNumber === secretNumber && counter <= 10) {
+      mydoc.style.color = 'red';
+      mydoc.textContent = 'You Got it!!!' + '🔥';
+      myDiv.textContent = '';
+      finish = true;
+      return;
+    } else if (counter >= 10) {
+      mydoc.textContent = 'You tried more than 10 times !!!' + '🎂';
+    } else {
+      const message = guessNumber < secretNumber ? 'higher' : 'lower';
 
-function guesser() {
-  const secretNumber = 5;
-  const guess = prompt('Guess the Number');
-  console.log(guess);
-  const mydoc = document.getElementById('output');
-
-  const guessNumber = parseInt(guess);
-  if (guessNumber === secretNumber) {
-    // document.getElementById('answer').innerHTML = 'You Got it!!';
-    mydoc.style.color = 'red';
-    mydoc.textContent = 'You Got it!!!';
-    return;
-  } else {
-    const message = guessNumber < secretNumber ? 'higher' : 'lower';
-    // console.log('wrong.. Go ' + message);
-    // document.getElementById('answer').innerHTML = message;
-    mydoc.textContent = 'wrong ... Go ' + message;
-    const myTime = setTimeout(() => guesser(), 1000); // recursive call
+      mydoc.textContent = `You entered ${guess}!!   
+        wrong ... Go ${message} 🍍`;
+      myDiv.textContent = `You have ${10 - counter} trial left`;
+      // 'You entered ' + guess + '!!   wrong ... Go ' + message + '🍍';
+      const myTime = setTimeout(() => guesser(), 1000); // recursive call
+    }
   }
+  if (!finish) guesser();
 }
 
 // const myMessage = 'hello, My name is Isaac';
