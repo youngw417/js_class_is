@@ -21,6 +21,7 @@ function myGuesser() {
   let counter = 0;
   function guesser() {
     const guess = prompt('Guess the Number');
+
     counter++;
     const mydoc = document.getElementById('output');
     const myDiv = document.querySelector('.div_2');
@@ -33,6 +34,7 @@ function myGuesser() {
       return;
     } else if (counter >= 10) {
       mydoc.textContent = 'You tried more than 10 times !!!' + '🎂';
+      myDiv.textContent = '';
     } else {
       const message = guessNumber < secretNumber ? 'higher' : 'lower';
 

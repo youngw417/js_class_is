@@ -7,13 +7,26 @@
     <link rel="stylesheet" href="index.css">
     <title>Document</title>
 </head>
-<body onload="myGuesser()">
-
-
-<!-- <input type="text" id="answer" />  -->
-    <div id="output"></div>
-    <div class="div_2">    
+<body>
+    <div class="nav">
+        <h2>Guess the number !!</h2>
+        <ul>
+            <li>
+                <button onclick="myGuesser()">Start</button>
+                <button onclick="reset()">Reset</button>
+            </li>
+        </ul>
     </div>
-    <script src="js/class_5.js"></script> 
+    <div class="main">
+        <div class="main_top">
+            Guess your number: <input type="text" class="guessInput">
+        </div>
+        <div class="main_low">
+            <div id="output"></div>
+            <div class="div_2"></div>
+        </div>
+        
+    </div>
+    <script src="js/class_5_1.js"></script>
 </body>
 </html>
