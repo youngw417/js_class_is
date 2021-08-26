@@ -16,7 +16,7 @@
 // guesser();
 
 function guesser() {
-  const secretNumber = 5;
+  const secretNumber = 10;
   const guess = prompt('Guess the Number');
   console.log(guess);
   const mydoc = document.getElementById('output');
