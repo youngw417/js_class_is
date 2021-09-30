@@ -146,6 +146,18 @@ switch (person) {
 f(x) = 2x + 3
 f(3) = 9
 
+switch (value) {
+  case 1:
+    console.log(addition(a, b));
+    break;
+  case 2: 
+    console.log(multi(a, b));
+    break;
+  case 3:
+  
+   break;
+  default:
+}
 
 
 console.log(multi(4, 4));
