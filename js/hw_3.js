@@ -26,3 +26,18 @@ function sortByLength(arr) {
 }
 
 console.log(sortByLength(arr3));
+
+for (let i = 'a'; i < 'z'; i++) {
+  console.log(i);
+}
+
+const x = 10;
+console.log(x.toString(36));
+let alphabet = '';
+
+for (i = 65; i < 91; i++) {
+  alphabet += String.fromCharCode(i);
+}
+
+// abcdefghijklmnopqrstuvwxyz
+console.log(alphabet);
