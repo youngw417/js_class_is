@@ -192,9 +192,11 @@ selectedBtn[0].addEventListener('click', function () {
     item.style.color = 'white';
   });
 });
+
 selectedBtn[1].addEventListener('click', function () {
+  const myColor = 'rgb(33, 121, 112)';
   myFirstLis.forEach((item) => {
-    item.style.backgroundColor = 'white';
+    item.style.backgroundColor = myColor;
     item.style.color = 'black';
   });
 });
