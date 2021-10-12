@@ -194,12 +194,18 @@ selectedBtn[0].addEventListener('click', function () {
 });
 
 selectedBtn[1].addEventListener('click', function () {
-  const myColor = 'rgb(33, 121, 112)';
+  // const myColor = 'rgb(33, 121, 112)';
   myFirstLis.forEach((item) => {
+    let myColor = `rgb(${randomColor()}, ${randomColor()},  ${randomColor()})`;
+    // 'rgb(' + randomColor() + ',' + randomColor() + ',' + randomColor() + ')';
     item.style.backgroundColor = myColor;
     item.style.color = 'black';
   });
 });
+
+function randomColor() {
+  return Math.round(Math.random() * 255);
+}
 
 /*
 HW #1
