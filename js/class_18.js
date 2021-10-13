@@ -186,18 +186,18 @@ myFirstLis.forEach((el, index) => {
 // });
 
 // when the first button is clicked,
-selectedBtn[0].addEventListener('click', function () {
-  myFirstLis.forEach((item) => {
-    item.style.backgroundColor = 'blue';
-    item.style.color = 'white';
-  });
-});
-selectedBtn[1].addEventListener('click', function () {
-  myFirstLis.forEach((item) => {
-    item.style.backgroundColor = 'white';
-    item.style.color = 'black';
-  });
-});
+// selectedBtn[0].addEventListener('click', function () {
+//   myFirstLis.forEach((item) => {
+//     item.style.backgroundColor = 'blue';
+//     item.style.color = 'white';
+//   });
+// });
+// selectedBtn[1].addEventListener('click', function () {
+//   myFirstLis.forEach((item) => {
+//     item.style.backgroundColor = 'white';
+//     item.style.color = 'black';
+//   });
+// });
 
 /*
 HW #1
