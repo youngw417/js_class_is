@@ -186,6 +186,7 @@ myFirstLis.forEach((el, index) => {
 // });
 
 // when the first button is clicked,
+
 selectedBtn[0].addEventListener('click', function () {
   myFirstLis.forEach((item) => {
     item.style.backgroundColor = 'blue';
