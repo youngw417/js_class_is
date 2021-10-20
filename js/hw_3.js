@@ -41,8 +41,6 @@ shoppingDiv.appendChild(myUl);
 
 myBtn.addEventListener('click', doSomething);
 
-console.log('myInput', myInput);
-
 function doSomething() {
   const myLi = document.createElement('li');
   const myText = document.createTextNode(myInput.value);
@@ -51,12 +49,12 @@ function doSomething() {
   myInput.value = '';
 }
 
-myInput.addEventListener('keydown', function (e) {
-  const myLi = document.createElement('li');
-  const myText = document.createTextNode(myInput.value);
-  myLi.appendChild(myText);
-
-  if (e.keycode === 13) {
+myInput.addEventListener('keypress', function (event) {
+  console.log('event', event);
+  if (event.key === 'Enter' || event.code === 'Space') {
+    const myLi = document.createElement('li');
+    const myText = document.createTextNode(myInput.value);
+    myLi.appendChild(myText);
     myUl.appendChild(myLi);
     myInput.value = '';
   }
