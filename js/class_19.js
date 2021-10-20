@@ -129,7 +129,7 @@ clickMe.addEventListener('click', function () {
 
 inputItem.addEventListener('keypress', function (e) {
   if (e.keyCode === 13) {
-    e.preventDefault();
+    // e.preventDefault();
     const li = document.createElement('li');
     const temptext = document.createTextNode(inputItem.value);
     li.appendChild(temptext);
