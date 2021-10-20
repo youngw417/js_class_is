@@ -124,9 +124,6 @@ clickMe.addEventListener('click', function () {
   const temptext = document.createTextNode(inputItem.value);
   li.appendChild(temptext);
   myList.appendChild(li);
-  setTimeout(function () {
-    inputItem.value = '';
-  }, 0);
 });
 
 /*
