@@ -13,50 +13,38 @@ let saved;
 window.addEventListener('load', function () {
   retrieved = JSON.parse(localStorage.getItem('saved'));
   console.log('retrieved', retrieved);
-  if (!retrieved) saved = [];
+  if (!retrieved) retrieved = [];
   else {
-    saved = retrieved;
-    saved.forEach((el) => {
-      const myLi = document.createElement('li');
-      const myText = document.createTextNode(el);
-      myLi.appendChild(myText);
-      myUl.appendChild(myLi);
-      myLi.addEventListener('click', function () {
-        const added = this.classList.toggle('red');
-
-        if (added) {
-          const item = document.createElement('span');
-          item.textContent = ' x';
-          this.appendChild(item);
-          item.addEventListener('click', function () {
-            this.parentElement.remove();
-            const index = saved.indexOf(el);
-            saved.splice(index, 1);
-          });
-        } else {
-          this.textContent = el;
-        }
-      });
-    });
+    retrieved = createList(retrieved);
   }
-  console.log('saved', saved);
 });
 
-function deleteBtn() {
-  const added = this.classList.toggle('red');
+function createList(saved) {
+  saved.forEach((el) => {
+    const myLi = document.createElement('li');
+    const myText = document.createTextNode(el);
+    myLi.appendChild(myText);
+    myLi.style.cursor = 'pointer';
+    myUl.appendChild(myLi);
+    myLi.addEventListener('click', function () {
+      const added = this.classList.toggle('red');
 
-  if (added) {
-    const item = document.createElement('span');
-    item.textContent = ' x';
-    this.appendChild(item);
-    item.addEventListener('click', function () {
-      this.parentElement.remove();
-      const index = saved.indexOf(el);
-      saved.splice(index, 1);
+      if (added) {
+        const item = document.createElement('span');
+        item.textContent = 'x';
+        item.style.marginLeft = '10px';
+        this.appendChild(item);
+        item.addEventListener('click', function () {
+          this.parentElement.remove();
+          const index = saved.indexOf(el);
+          saved.splice(index, 1);
+        });
+      } else {
+        this.textContent = el;
+      }
     });
-  } else {
-    this.textContent = el;
-  }
+  });
+  return saved;
 }
 
 const myBtn = document.createElement('button');
@@ -93,36 +81,49 @@ shoppingDiv.appendChild(myUl);
 myBtn.addEventListener('click', doSomething);
 
 function doSomething() {
-  const myLi = document.createElement('li');
-  const myText = document.createTextNode(myInput.value);
-  saved.push(myInput.value);
-  myLi.addEventListener('click', function () {
-    console.log('red', this.classList.toggle('red'));
-  });
-  myLi.appendChild(myText);
-  myUl.appendChild(myLi);
-  myInput.value = '';
+  createList2(retrieved);
 }
 
 myInput.addEventListener('keypress', function (event) {
   console.log('event', event);
-  if (event.key === 'Enter' || event.code === 'Space') {
-    const myLi = document.createElement('li');
-    const myText = document.createTextNode(myInput.value);
-    saved.push(myInput.value);
-    myLi.addEventListener('click', function () {
-      this.classList.toggle('red');
-    });
-    myLi.appendChild(myText);
-    myUl.appendChild(myLi);
-    myInput.value = '';
+  if (event.key === 'Enter') {
+    createList2(retrieved);
   }
 });
 
+function createList2(saved) {
+  const myLi = document.createElement('li');
+  myLi.style.cursor = 'pointer';
+  const myText = document.createTextNode(myInput.value);
+  const myInput1 = myInput.value;
+  saved.push(myInput.value);
+  myLi.appendChild(myText);
+  myUl.appendChild(myLi);
+
+  myLi.addEventListener('click', function () {
+    const added = this.classList.toggle('red');
+    console.log('added', added);
+
+    if (added) {
+      const item = document.createElement('span');
+      item.textContent = 'x';
+      item.style.marginLeft = '10px';
+      this.appendChild(item);
+      item.addEventListener('click', function () {
+        this.parentElement.remove();
+        const index = saved.indexOf(myInput.value);
+        saved.splice(index, 1);
+      });
+    } else {
+      console.log('myInput', myInput.value);
+      this.textContent = myInput1;
+    }
+  });
+
+  myInput.value = '';
+}
+
 const saving = document.querySelector('.clickMe');
 saving.addEventListener('click', function () {
-  console.log(saved);
-  localStorage.setItem('saved', JSON.stringify(saved));
+  localStorage.setItem('saved', JSON.stringify(retrieved));
 });
-
-console.log('retrieved', retrieved);
